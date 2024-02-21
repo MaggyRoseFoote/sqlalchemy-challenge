@@ -94,7 +94,4 @@ app.route("api/v1.0/<start_date>/<end_date>")
 def Range(startingDate, endingDate): 
     outputRangeTemp = session.query(func.avg(Measurement.tobs), func.min(Measurement.tobs), func.max(Measurement.tobs).filter(Measurement.date >= startingDate).filter(Measurement.date <= endingDate)).all()
     tempRange = list(np.ravel(outputRangeTemp))    
-    return jsonify(tempRange)  
-
-if __name__ == "__main__": 
-    app.run(debug=True)
+    return jsonify(tempRange)     
